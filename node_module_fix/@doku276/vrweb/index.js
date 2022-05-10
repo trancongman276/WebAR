@@ -69,10 +69,6 @@ function webvr(urls) {
       .then((session) => {
         // xrButton.setSession(session);
         onSessionStarted(session);
-      }).catch(function(error) {
-        // "immersive-vr" sessions are not supported
-        console.warn("'immersive-vr' isn't supported, or an error occurred activating VR!");
-        alert("'immersive-vr' isn't supported, or an error occurred activating VR!")
       })
   }
 

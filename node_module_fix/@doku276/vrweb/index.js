@@ -53,7 +53,7 @@ function webvr(urls) {
       textExitXRTitle: "EXIT  AR",
     });
     // document.querySelector("header").appendChild(xrButton.domElement);
-    xrButton.__onXRButtonClick();
+    xrButton.domElement.click();
     if (navigator.xr) {
       navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
         xrButton.enabled = supported;

@@ -32,17 +32,21 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
     <link rel="stylesheet" href="css/common.css" />
 
-    <title>Hit Test with Anchors</title>
+    <title>WebXR Demo</title>
   </head>
   <body>
     <header>WebXR Demo</header>
+    <div id="ar_button"></div>
     <script type="module">
       import webvr from "./node_module_fix/@doku276/vrweb/index.js";
 
       const flower = "media/gltf/sunflower/sunflower.gltf";
       const reticle = "media/gltf/reticle/reticle.gltf";
       const data = { OBJECT_URL: flower, RETICLE_URL: reticle };
-      webvr(data);
+      
+      const button = webvr(data);
+
+      document.getElementById('ar_button').appendChild(button);
     </script>
   </body>
 </html>

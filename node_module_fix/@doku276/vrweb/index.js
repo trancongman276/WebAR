@@ -52,13 +52,16 @@ function webvr(urls) {
       textXRNotFoundTitle: "AR NOT FOUND",
       textExitXRTitle: "EXIT  AR",
     });
+
     // document.querySelector("header").appendChild(xrButton.domElement);
-    xrButton.domElement.click();
+
     if (navigator.xr) {
       navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
         xrButton.enabled = supported;
       });
     }
+
+    return xrButton;
   }
 
   function onRequestSession() {
@@ -67,7 +70,7 @@ function webvr(urls) {
         requiredFeatures: ["local", "hit-test", "anchors"],
       })
       .then((session) => {
-        // xrButton.setSession(session);
+        xrButton.setSession(session);
         onSessionStarted(session);
       })
   }
@@ -116,7 +119,7 @@ function webvr(urls) {
   }
 
   function onSessionEnded(event) {
-    // xrButton.setSession(null);
+    xrButton.setSession(null);
   }
 
   const MAX_ANCHORED_OBJECTS = 30;
@@ -191,19 +194,8 @@ function webvr(urls) {
     scene.endFrame();
   }
 
-  // initXR();
-  // let requestPromise = onRequestSession();
-  // if (requestPromise) {
-  //   requestPromise.catch((err) => {
-  //     // Reaching this point indicates that the session request has failed
-  //     // and we should communicate that to the user somehow.
-  //     let errorMsg = `XRSession creation failed: ${err.message}`;
-  //     alert("Cannot create AR session. Make sure your device support AR.")
-  //     console.error(errorMsg);
-  //   });
-  // }
-  initXR();
-  return true;
+  let button = initXR();
+  return button.domElement;
 };
 
 export default webvr;

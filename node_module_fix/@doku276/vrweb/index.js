@@ -69,7 +69,11 @@ function webvr(urls) {
       .then((session) => {
         // xrButton.setSession(session);
         onSessionStarted(session);
-      });
+      }).catch(function(error) {
+        // "immersive-vr" sessions are not supported
+        console.warn("'immersive-vr' isn't supported, or an error occurred activating VR!");
+        alert("'immersive-vr' isn't supported, or an error occurred activating VR!")
+      })
   }
 
   function onSessionStarted(session) {
@@ -192,16 +196,17 @@ function webvr(urls) {
   }
 
   // initXR();
-  let requestPromise = onRequestSession();
-  if (requestPromise) {
-    requestPromise.catch((err) => {
-      // Reaching this point indicates that the session request has failed
-      // and we should communicate that to the user somehow.
-      let errorMsg = `XRSession creation failed: ${err.message}`;
-      alert("Cannot create AR session. Make sure your device support AR.")
-      console.error(errorMsg);
-    });
-  }
+  // let requestPromise = onRequestSession();
+  // if (requestPromise) {
+  //   requestPromise.catch((err) => {
+  //     // Reaching this point indicates that the session request has failed
+  //     // and we should communicate that to the user somehow.
+  //     let errorMsg = `XRSession creation failed: ${err.message}`;
+  //     alert("Cannot create AR session. Make sure your device support AR.")
+  //     console.error(errorMsg);
+  //   });
+  // }
+  onRequestSession();
   return true;
 };
 

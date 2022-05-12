@@ -52,13 +52,16 @@ function webvr(urls) {
       textXRNotFoundTitle: "AR NOT FOUND",
       textExitXRTitle: "EXIT  AR",
     });
-    document.querySelector("header").appendChild(xrButton.domElement);
+
+    // document.querySelector("header").appendChild(xrButton.domElement);
 
     if (navigator.xr) {
       navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
         xrButton.enabled = supported;
       });
     }
+
+    return xrButton;
   }
 
   function onRequestSession() {
@@ -69,7 +72,7 @@ function webvr(urls) {
       .then((session) => {
         xrButton.setSession(session);
         onSessionStarted(session);
-      });
+      })
   }
 
   function onSessionStarted(session) {
@@ -191,8 +194,8 @@ function webvr(urls) {
     scene.endFrame();
   }
 
-  initXR();
-  return true;
+  let button = initXR();
+  return button.domElement;
 };
 
 export default webvr;

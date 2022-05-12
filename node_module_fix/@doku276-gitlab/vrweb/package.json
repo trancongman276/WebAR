@@ -1,0 +1,10 @@
+{
+  "name": "@doku276-gitlab/vrweb",
+  "version": "1.0.0",
+  "description": "Create an AR object",
+  "license": "MIT",
+  "main": "index.js",
+  "publishConfig": {
+    "@doku276-gitlab:registry": "https://gitlab.com/api/v4/projects/36094587/packages/npm/"
+  }
+}

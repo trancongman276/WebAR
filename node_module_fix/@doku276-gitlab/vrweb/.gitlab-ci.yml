@@ -1,0 +1,14 @@
+image: node:12.20.1
+
+stages:
+  - build
+
+build:
+  stage: build
+  when: manual
+  script:
+    - npm install
+    - npm publish
+    - echo "-- build completed succesfully"
+  only:
+    - dev.1.0.0

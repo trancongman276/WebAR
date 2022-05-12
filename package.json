@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@doku276-gitlab/vrweb": "^1.0.0",
     "@doku276/vrweb": "^1.0.2"
   }
 }

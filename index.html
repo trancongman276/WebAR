@@ -36,17 +36,36 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   </head>
   <body>
     <header>WebXR Demo</header>
+    <select id="obj_loading">
+      <option value="">Choose object</option>
+      <option value="MD450BK">MD 450 BK</option>
+      <option value="MP592HC">MP 592 HC</option>
+      <option value="sunflower">Sun Flower</option>
+    </select>
     <div id="ar_button"></div>
     <script type="module">
       import webvr from "./node_module_fix/@doku276/vrweb/index.js";
 
       const flower = "media/gltf/sunflower/sunflower.gltf";
+      const MD450BK = "media/gltf/obj1/MD450BK.gltf";
+      const MP592HC = "media/gltf/obj1/MP592HC.gltf";
       const reticle = "media/gltf/reticle/reticle.gltf";
-      const data = { OBJECT_URL: flower, RETICLE_URL: reticle };
-      
-      const button = webvr(data);
 
-      document.getElementById('ar_button').appendChild(button);
+      const _object = { sunflower: flower, MD450BK: MD450BK, MP592HC: MP592HC };
+      function run() {
+        var e = document.getElementById("obj_loading");
+        // console.log(_object[e.value]);
+        var ar_button = document.getElementById("ar_button");
+        ar_button.innerHTML = "";
+        if (!_object[e.value])
+          return
+        const data = { OBJECT_URL: _object[e.value], RETICLE_URL: reticle };
+
+        const button = webvr(data);
+
+        ar_button.appendChild(button);
+      }
+      document.getElementById("obj_loading").addEventListener("change", run);
     </script>
   </body>
 </html>

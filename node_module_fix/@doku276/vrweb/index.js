@@ -52,13 +52,16 @@ function webvr(urls) {
       textXRNotFoundTitle: "AR NOT FOUND",
       textExitXRTitle: "EXIT  AR",
     });
-    document.querySelector("header").appendChild(xrButton.domElement);
+
+    // document.querySelector("header").appendChild(xrButton.domElement);
 
     if (navigator.xr) {
       navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
         xrButton.enabled = supported;
       });
     }
+
+    return xrButton;
   }
 
   function onRequestSession() {
@@ -69,7 +72,7 @@ function webvr(urls) {
       .then((session) => {
         xrButton.setSession(session);
         onSessionStarted(session);
-      });
+      })
   }
 
   function onSessionStarted(session) {
@@ -123,12 +126,14 @@ function webvr(urls) {
   let anchoredObjects = [];
   function addAnchoredObjectsToScene(anchor) {
     let object = new Gltf2Node({ url: OBJECT_URL });
+    console.log(object);
     scene.addNode(object);
+    console.log(scene);
     anchoredObjects.push({
       anchoredObject: object,
       anchor: anchor,
     });
-
+    console.log(anchoredObjects)
     // For performance reasons if we add too many objects start
     // removing the oldest ones to keep the scene complexity
     // from growing too much.
@@ -191,8 +196,8 @@ function webvr(urls) {
     scene.endFrame();
   }
 
-  initXR();
-  return true;
+  let button = initXR();
+  return button.domElement;
 };
 
 export default webvr;

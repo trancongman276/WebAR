@@ -127,6 +127,8 @@ function webvr(urls) {
   function addAnchoredObjectsToScene(anchor) {
     let object = new Gltf2Node({ url: OBJECT_URL });
     console.log(object);
+    model.scale = [0.1, 0.1, 0.1];
+    console.log(object);
     scene.addNode(object);
     console.log(scene);
     anchoredObjects.push({

@@ -42,6 +42,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       <option value="MP592HC">MP 592 HC</option>
       <option value="sunflower">Sun Flower</option>
       <option value="tv">Mi Smart TV</option>
+      <option value="object">Test Object</option>
     </select>
     <div id="ar_button"></div>
     <script type="module">
@@ -52,12 +53,14 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const MP592HC = "media/gltf/MP592HC/MP592HC.gltf";
       const reticle = "media/gltf/reticle/reticle.gltf";
       const tv = "media/gltf/TV/MI_SMART_TV.gltf";
+      const object = "media/gltf/Object/object.glb";
 
       const _object = {
         sunflower: flower,
         MD450BK: MD450BK,
         MP592HC: MP592HC,
         tv: tv,
+        object: object,
       };
       function run() {
         var e = document.getElementById("obj_loading");
